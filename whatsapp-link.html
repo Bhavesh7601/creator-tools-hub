@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>WhatsApp Link Generator | CreatorToolsHub</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --primary:#2563eb;
+  --primary-dark:#1e40af;
+  --bg:#f3f6fb;
+  --card:#ffffff;
+  --text:#111827;
+}
+
+body{
+  margin:0;
+  font-family:'Poppins',sans-serif;
+  background:var(--bg);
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  min-height:100vh;
+  transition:.3s;
+}
+
+.card{
+  width:420px;
+  background:var(--card);
+  padding:30px;
+  border-radius:18px;
+  box-shadow:0 15px 40px rgba(0,0,0,0.08);
+  transition:.3s;
+}
+
+.logo{
+  text-align:center;
+  font-weight:600;
+  color:var(--primary);
+  margin-bottom:5px;
+}
+
+h2{
+  text-align:center;
+  margin:0 0 20px;
+}
+
+label{
+  font-size:14px;
+  font-weight:500;
+  margin-top:12px;
+  display:block;
+}
+
+select,input,textarea{
+  width:100%;
+  padding:12px;
+  margin-top:6px;
+  border-radius:10px;
+  border:1px solid #e5e7eb;
+  font-size:14px;
+  transition:.3s;
+}
+
+select:focus,input:focus,textarea:focus{
+  border-color:var(--primary);
+  outline:none;
+  box-shadow:0 0 0 3px rgba(37,99,235,0.1);
+}
+
+button{
+  width:100%;
+  padding:12px;
+  margin-top:18px;
+  border:none;
+  border-radius:12px;
+  background:var(--primary);
+  color:white;
+  font-weight:600;
+  cursor:pointer;
+  transition:.3s;
+}
+
+button:hover{
+  background:var(--primary-dark);
+}
+
+.copy-btn{
+  background:#10b981;
+}
+
+.copy-btn:hover{
+  background:#059669;
+}
+
+.result{
+  margin-top:15px;
+  background:#eef2ff;
+  padding:12px;
+  border-radius:10px;
+  font-size:13px;
+  word-break:break-all;
+}
+
+.toggle{
+  position:absolute;
+  top:20px;
+  right:20px;
+  background:#111827;
+  color:white;
+  padding:8px 14px;
+  border-radius:20px;
+  font-size:12px;
+  cursor:pointer;
+}
+
+.dark{
+  --bg:#0f172a;
+  --card:#1e293b;
+  --text:#f8fafc;
+}
+
+.dark body{
+  background:var(--bg);
+}
+
+.dark .card{
+  background:var(--card);
+  color:var(--text);
+}
+
+.dark .result{
+  background:#334155;
+}
+
+.footer{
+  text-align:center;
+  margin-top:15px;
+  font-size:12px;
+  opacity:.7;
+}
+</style>
+</head>
+
+
+<body>
+
+<div class="toggle" onclick="toggleDark()">Dark Mode</div>
+
+
+
+<div class="card">
+  <div class="logo">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" width="20" style="vertical-align:middle;">
+    CreatorToolsHub
+  </div>
+
+  <h2>WhatsApp Link Generator</h2>
+
+  <label>Country Code</label>
+  <select id="country">
+    <option value="91">India (+91)</option>
+    <option value="1">USA (+1)</option>
+    <option value="44">UK (+44)</option>
+    <option value="971">UAE (+971)</option>
+    <option value="61">Australia (+61)</option>
+    <option value="81">Japan (+81)</option>
+    <option value="49">Germany (+49)</option>
+    <option value="33">France (+33)</option>
+    <option value="92">Pakistan (+92)</option>
+    <option value="880">Bangladesh (+880)</option>
+    <option value="94">Sri Lanka (+94)</option>
+    <option value="977">Nepal (+977)</option>
+    <option value="86">China (+86)</option>
+    <option value="7">Russia (+7)</option>
+    <option value="55">Brazil (+55)</option>
+    <option value="27">South Africa (+27)</option>
+  </select>
+
+  <label>Phone Number (10 digits only)</label>
+  <input type="text" id="phone" maxlength="10" placeholder="Enter 10 digit number">
+
+  <label>Custom Message</label>
+  <textarea id="message" rows="3" placeholder="Type your message..."></textarea>
+
+  <button onclick="generateLink()">Generate Link</button>
+
+  <div id="output"></div>
+
+  <!-- Bottom Ad Banner -->
+  <div style="margin-top:20px; height:80px; background:#ddd; border-radius:10px; display:flex; align-items:center; justify-content:center;">
+    Ad Banner (300x250)
+  </div>
+
+  <div class="footer">Free Social Media Tools for Creators</div>
+</div>
+
+
+<script>
+
+function generateLink(){
+  let country=document.getElementById("country").value;
+  let phone=document.getElementById("phone").value.trim();
+  let message=document.getElementById("message").value.trim();
+
+  // Allow only digits
+  phone = phone.replace(/\D/g,'');
+
+  // Strict 10 digit validation
+  if(phone.length !== 10){
+    alert("Phone number must be exactly 10 digits");
+    return;
+  }
+
+  let full=country+phone;
+
+  let link=`https://wa.me/${full}?text=${encodeURIComponent(message)}`;
+
+  document.getElementById("output").innerHTML=
+  `<div class="result">
+    <strong>Your Link:</strong><br>
+    <a href="${link}" target="_blank" style="color:#2563eb; font-weight:500;">
+      ${link}
+    </a>
+    <br><br>
+    <button class="copy-btn" onclick="copyLink('${link}')">Copy Link</button>
+  </div>`;
+}
+
+function copyLink(link){
+  navigator.clipboard.writeText(link);
+  alert("Link Copied!");
+}
+
+function toggleDark(){
+  document.body.classList.toggle("dark");
+}
+
+</script>
+
+
+</body>
+</html>
+

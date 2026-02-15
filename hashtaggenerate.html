@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Professional Instagram Hashtag Generator | CreatorToolsHub</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --primary:#ec4899;
+  --dark:#111827;
+  --bg:#fdf2f8;
+  --card:#ffffff;
+}
+
+body{
+  margin:0;
+  font-family:'Poppins',sans-serif;
+  background:var(--bg);
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+}
+
+/* Banner */
+.banner{
+  width:100%;
+  background:linear-gradient(90deg,#f472b6,#ec4899);
+  color:white;
+  text-align:center;
+  padding:15px;
+  font-weight:600;
+  letter-spacing:1px;
+}
+
+/* Card */
+.card{
+  width:500px;
+  max-width:95%;
+  background:var(--card);
+  padding:30px;
+  border-radius:20px;
+  box-shadow:0 20px 40px rgba(0,0,0,0.1);
+  margin:30px 0;
+}
+
+.logo{
+  text-align:center;
+  font-weight:700;
+  color:var(--primary);
+  font-size:20px;
+}
+
+h2{
+  text-align:center;
+  margin-bottom:20px;
+}
+
+label{
+  font-size:13px;
+  font-weight:600;
+  margin-top:15px;
+  display:block;
+}
+
+input,select{
+  width:100%;
+  padding:12px;
+  margin-top:6px;
+  border-radius:12px;
+  border:1px solid #ddd;
+  font-size:14px;
+}
+
+button{
+  width:100%;
+  padding:14px;
+  margin-top:20px;
+  border:none;
+  border-radius:14px;
+  background:var(--primary);
+  color:white;
+  font-weight:700;
+  cursor:pointer;
+  transition:.3s;
+}
+
+button:hover{
+  background:#be185d;
+}
+
+.result-section{
+  margin-top:20px;
+  background:#fce7f3;
+  padding:15px;
+  border-radius:14px;
+}
+
+.result-section h4{
+  margin-bottom:8px;
+  color:#be185d;
+}
+
+.hashtags{
+  font-size:14px;
+  line-height:1.8;
+  word-break:break-word;
+}
+
+.copy-btn{
+  margin-top:10px;
+  background:#10b981;
+}
+
+/* Bottom Banner */
+.bottom-banner{
+  width:100%;
+  background:linear-gradient(90deg,#ec4899,#be185d);
+  color:white;
+  text-align:center;
+  padding:15px;
+  font-weight:600;
+}
+</style>
+</head>
+
+<body>
+
+<div class="banner">
+  🚀 Promote Your Brand Here | Premium Ad Banner
+</div>
+
+<div class="card">
+  <div class="logo">CreatorToolsHub</div>
+  <h2>Professional Instagram Hashtag Generator</h2>
+
+  <label>Enter Keyword</label>
+  <input type="text" id="keyword" placeholder="fitness, coding, travel">
+
+  <label>Select Category</label>
+  <select id="category">
+    <option>Reels</option>
+    <option>Business</option>
+    <option>Fitness</option>
+    <option>Travel</option>
+    <option>Tech</option>
+  </select>
+
+  <button onclick="generateHashtags()">Generate Professional Hashtags</button>
+
+  <div id="output"></div>
+</div>
+
+<div class="bottom-banner">
+  🌟 Advertise With Us | Contact CreatorToolsHub
+</div>
+
+<script>
+
+function shuffle(array){
+  return array.sort(() => 0.5 - Math.random());
+}
+
+function unique(array){
+  return [...new Set(array)];
+}
+
+function generateHashtags(){
+
+  let keyword = document.getElementById("keyword").value.trim().toLowerCase();
+  let category = document.getElementById("category").value;
+
+  if(keyword === ""){
+    alert("Enter keyword");
+    return;
+  }
+
+  let base = [
+    keyword, keyword+"life", keyword+"lover", keyword+"daily",
+    keyword+"goals", keyword+"community", keyword+"world",
+    keyword+"tips", keyword+"vibes", keyword+"inspiration"
+  ];
+
+  let popular = [
+    "instagood","photooftheday","love","fashion",
+    "beautiful","happy","cute","tbt","followme","like4like"
+  ];
+
+  let niche = [
+    keyword+"reels", keyword+"trend", keyword+"blog",
+    keyword+"content", keyword+"creator", keyword+"style",
+    keyword+"journey", keyword+"growth"
+  ];
+
+  let categoryTags = {
+    Reels:["reels","viral","explorepage","trendingreels","reelitfeelit"],
+    Business:["entrepreneur","startup","success","marketing","businessmind"],
+    Fitness:["gym","workout","fitlife","healthylifestyle","bodybuilding"],
+    Travel:["wanderlust","explore","travelgram","adventure","naturelover"],
+    Tech:["coding","developer","programming","technology","webdev"]
+  };
+
+  let allTags = unique([
+    ...base,
+    ...popular,
+    ...niche,
+    ...categoryTags[category]
+  ]);
+
+  allTags = shuffle(allTags).slice(0,30);
+  allTags = allTags.map(tag => "#"+tag);
+
+  let popularTags = allTags.slice(0,10).join(" ");
+  let nicheTags = allTags.slice(10,20).join(" ");
+  let trendingTags = allTags.slice(20,30).join(" ");
+  let fullTags = allTags.join(" ");
+
+  document.getElementById("output").innerHTML = `
+    <div class="result-section">
+      <h4>🔥 Popular Hashtags</h4>
+      <div class="hashtags">${popularTags}</div>
+      <button class="copy-btn" onclick="copyText('${popularTags}')">Copy Popular</button>
+    </div>
+
+    <div class="result-section">
+      <h4>🎯 Niche Hashtags</h4>
+      <div class="hashtags">${nicheTags}</div>
+      <button class="copy-btn" onclick="copyText('${nicheTags}')">Copy Niche</button>
+    </div>
+
+    <div class="result-section">
+      <h4>🚀 Trending Hashtags</h4>
+      <div class="hashtags">${trendingTags}</div>
+      <button class="copy-btn" onclick="copyText('${trendingTags}')">Copy Trending</button>
+    </div>
+
+    <div class="result-section">
+      <h4>📋 All 30 Hashtags</h4>
+      <div class="hashtags">${fullTags}</div>
+      <button class="copy-btn" onclick="copyText('${fullTags}')">Copy All</button>
+    </div>
+  `;
+}
+
+function copyText(text){
+  navigator.clipboard.writeText(text);
+  alert("Copied!");
+}
+
+</script>
+
+</body>
+</html>

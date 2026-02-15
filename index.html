@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>CreatorToolsHub | Free Social Media Tools</title>
+<meta name="description" content="Free professional tools like Instagram Bio Generator, Hashtag Generator and WhatsApp Link Generator. No login required.">
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --primary:#7c3aed;
+  --secondary:#ec4899;
+  --dark:#111827;
+  --light:#f8fafc;
+  --card:#ffffff;
+}
+
+body{
+  margin:0;
+  font-family:'Poppins',sans-serif;
+  background:var(--light);
+  color:var(--dark);
+  transition:.3s;
+}
+
+/* DARK MODE */
+.dark{
+  background:#0f172a;
+  color:#f1f5f9;
+}
+.dark .card{
+  background:#1e293b;
+}
+.dark .navbar{
+  background:#111827;
+}
+
+/* NAVBAR */
+.navbar{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:15px 30px;
+  background:white;
+  box-shadow:0 5px 20px rgba(0,0,0,0.05);
+  position:sticky;
+  top:0;
+  z-index:100;
+}
+
+.navbar h2{
+  margin:0;
+  color:var(--primary);
+}
+
+.nav-links a{
+  margin-left:20px;
+  text-decoration:none;
+  color:var(--dark);
+  font-weight:500;
+}
+
+.dark .nav-links a{
+  color:white;
+}
+
+.toggle-btn{
+  background:var(--primary);
+  color:white;
+  border:none;
+  padding:8px 14px;
+  border-radius:20px;
+  cursor:pointer;
+}
+
+/* BANNER */
+.banner{
+  background:linear-gradient(90deg,#7c3aed,#ec4899);
+  color:white;
+  text-align:center;
+  padding:15px;
+  font-weight:600;
+}
+
+/* HERO */
+.hero{
+  text-align:center;
+  padding:80px 20px;
+}
+
+.hero h1{
+  font-size:40px;
+}
+
+.hero p{
+  margin-top:10px;
+  opacity:.7;
+}
+
+/* TOOLS */
+.tools{
+  max-width:1100px;
+  margin:50px auto;
+  padding:0 20px;
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+  gap:25px;
+}
+
+.card{
+  background:var(--card);
+  padding:25px;
+  border-radius:18px;
+  box-shadow:0 15px 35px rgba(0,0,0,0.08);
+  transition:.4s;
+  text-align:center;
+}
+
+.card:hover{
+  transform:translateY(-8px);
+}
+
+.card a{
+  text-decoration:none;
+  background:var(--secondary);
+  color:white;
+  padding:10px 18px;
+  border-radius:20px;
+  display:inline-block;
+  margin-top:10px;
+}
+
+/* SEO CONTENT */
+.seo{
+  max-width:1000px;
+  margin:60px auto;
+  padding:0 20px;
+  line-height:1.7;
+}
+
+/* FOOTER */
+footer{
+  background:#111827;
+  color:white;
+  text-align:center;
+  padding:30px;
+  margin-top:60px;
+}
+</style>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<div class="navbar">
+  <h2>CreatorToolsHub</h2>
+  <div class="nav-links">
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="privacy.html">Privacy</a>
+    <button class="toggle-btn" onclick="toggleDark()">Dark Mode</button>
+  </div>
+</div>
+
+<!-- TOP AD -->
+<div class="banner">🚀 Your Ad Banner Here (Top)</div>
+
+<!-- HERO -->
+<section class="hero">
+  <h1>Free Tools for Social Media Creators</h1>
+  <p>Generate Bios, Hashtags & Links Instantly — No Login Required</p>
+</section>
+
+<!-- TOOLS -->
+<section class="tools">
+
+  <div class="card">
+    <h3>Instagram Bio Generator</h3>
+    <p>Create stylish bios instantly.</p>
+    <a href="instabio.html">Use Tool</a>
+  </div>
+
+  <div class="card">
+    <h3>Instagram Hashtag Generator</h3>
+    <p>Generate 30 unique hashtags.</p>
+    <a href="hashtaggenerate.html">Use Tool</a>
+  </div>
+
+  <div class="card">
+    <h3>WhatsApp Link Generator</h3>
+    <p>Create direct chat links easily.</p>
+    <a href="whatsapp-link.html">Use Tool</a>
+  </div>
+
+</section>
+
+<!-- MIDDLE AD -->
+<div class="banner">🌟 Premium Sponsor Banner (Middle)</div>
+
+<!-- SEO CONTENT -->
+<section class="seo">
+  <h2>Why Use CreatorToolsHub?</h2>
+  <p>
+  CreatorToolsHub provides free professional tools for Instagram creators, influencers, students, developers and businesses. 
+  Our Instagram Bio Generator helps you create stylish bios instantly. 
+  The Hashtag Generator creates trending hashtags to boost reach and engagement.
+  </p>
+
+  <h2>Best Free Social Media Tools Online</h2>
+  <p>
+  If you are searching for a free Instagram bio maker, professional hashtag generator, or WhatsApp link generator, 
+  CreatorToolsHub provides everything in one place. 
+  No login required, 100% secure and mobile friendly tools.
+  </p>
+</section>
+
+<!-- BOTTOM AD -->
+<div class="banner">📢 Advertise With Us (Bottom)</div>
+
+<footer>
+  © 2026 CreatorToolsHub | Built for Creators 💜
+</footer>
+
+<script>
+function toggleDark(){
+  document.body.classList.toggle("dark");
+}
+</script>
+
+</body>
+</html>

@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Instagram Bio Generator | CreatorToolsHub</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --primary:#7c3aed;
+  --primary-dark:#5b21b6;
+  --bg:#f5f3ff;
+  --card:#ffffff;
+}
+
+body{
+  margin:0;
+  font-family:'Poppins',sans-serif;
+  background:var(--bg);
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  min-height:100vh;
+}
+
+.top-ad{
+  width:100%;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  margin-top:20px;
+  margin-bottom:20px;
+}
+
+.top-ad p{
+  font-size:12px;
+  color:#666;
+  margin-bottom:5px;
+}
+
+.ad-box{
+  width:728px;
+  max-width:95%;
+  height:90px;
+  background:linear-gradient(135deg,#dbeafe,#ede9fe);
+  border-radius:12px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-weight:600;
+  color:#555;
+  box-shadow:0 10px 25px rgba(0,0,0,0.08);
+}
+
+.card{
+  width:450px;
+  background:var(--card);
+  padding:30px;
+  border-radius:20px;
+  box-shadow:0 20px 50px rgba(0,0,0,0.1);
+  margin-top:40px;
+}
+
+.logo{
+  text-align:center;
+  font-weight:700;
+  color:var(--primary);
+  font-size:18px;
+}
+
+h2{
+  text-align:center;
+  margin-bottom:20px;
+}
+
+label{
+  font-size:13px;
+  font-weight:600;
+  margin-top:14px;
+  display:block;
+}
+
+input,select{
+  width:100%;
+  padding:12px;
+  margin-top:6px;
+  border-radius:12px;
+  border:1px solid #ddd;
+  font-size:14px;
+}
+
+button{
+  width:100%;
+  padding:14px;
+  margin-top:20px;
+  border:none;
+  border-radius:14px;
+  background:var(--primary);
+  color:white;
+  font-weight:700;
+  cursor:pointer;
+  transition:.3s;
+}
+
+button:hover{
+  background:var(--primary-dark);
+}
+
+.result{
+  margin-top:18px;
+  background:#ede9fe;
+  padding:15px;
+  border-radius:14px;
+  font-size:14px;
+  line-height:1.6;
+}
+
+.copy-btn{
+  background:#10b981;
+  margin-top:10px;
+}
+
+.footer{
+  text-align:center;
+  font-size:12px;
+  margin-top:15px;
+  opacity:.6;
+}
+</style>
+</head>
+
+<body>
+<!-- Top Ad Banner Start -->
+<div class="top-ad">
+    <p>Advertisement</p>
+    <div class="ad-box">
+        728 x 90 Ad Banner
+    </div>
+</div>
+<!-- Top Ad Banner End -->
+
+<div class="card">
+  <div class="logo">CreatorToolsHub</div>
+  <h2>AI Instagram Bio Generator</h2>
+
+  <label>Your Name</label>
+  <input type="text" id="name" placeholder="Enter your name">
+
+  <label>Category</label>
+  <select id="category">
+    <option>Influencer</option>
+    <option>Business</option>
+    <option>Developer</option>
+    <option>Student</option>
+    <option>Fitness</option>
+    <option>Gamer</option>
+  </select>
+
+  <label>Keywords</label>
+  <input type="text" id="keywords" placeholder="coding, reels, travel">
+
+  <button onclick="generateAIStyleBio()">Generate AI Bio</button>
+
+  <div id="output"></div>
+
+  <div class="footer">Smart AI-style bio generation</div>
+</div>
+<!-- Top Ad Banner Start -->
+<div class="top-ad">
+    <p>Advertisement</p>
+    <div class="ad-box">
+        728 x 90 Ad Banner
+    </div>
+</div>
+<!-- Top Ad Banner End -->
+
+<script>
+
+function randomFrom(arr){
+  return arr[Math.floor(Math.random() * arr.length)];
+}
+
+function generateAIStyleBio(){
+
+  let name = document.getElementById("name").value.trim();
+  let category = document.getElementById("category").value;
+  let keywords = document.getElementById("keywords").value.trim();
+
+  if(name === ""){
+    alert("Enter your name");
+    return;
+  }
+
+  const powerLines = [
+    "Building dreams into reality 🚀",
+    "Turning passion into profession 🔥",
+    "Creating my own success story 💎",
+    "On a mission to grow daily 🌱",
+    "Consistency beats talent 💯",
+    "Hustle • Learn • Repeat 🔁"
+  ];
+
+  const callToAction = [
+    "DM for collaborations",
+    "Let’s connect & grow",
+    "Follow the journey",
+    "Work hard, stay humble",
+    "Leveling up everyday"
+  ];
+
+  const stylishSymbols = ["✨","⚡","🔥","🚀","💎","🌟"];
+
+  let bio = `
+${randomFrom(stylishSymbols)} ${name.toUpperCase()}
+${category} | ${keywords}
+
+${randomFrom(powerLines)}
+${randomFrom(callToAction)}
+`;
+
+  document.getElementById("output").innerHTML = `
+    <div class="result">
+      ${bio.replace(/\n/g,"<br>")}
+      <button class="copy-btn" onclick="copyText(\`${bio}\`)">Copy Bio</button>
+    </div>
+  `;
+}
+
+function copyText(text){
+  navigator.clipboard.writeText(text);
+  alert("Copied!");
+}
+
+</script>
+
+</body>
+</html>
